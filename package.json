@@ -6,7 +6,7 @@
     "start-dev": "nodemon app.js",
     "start-prod": "pm2 start app.js",
     "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js",
-    "log": "tail -f logs/output.log"
+    "logs": "tail -f logs/output.log"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
