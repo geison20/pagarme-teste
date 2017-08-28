@@ -29,7 +29,7 @@ class Authentication {
         JWToken.create(userByEmail, token => {
           res.status(200).json({
             error: false,
-            status_code: 200,
+            code: 200,
             message: "Login successfull",
             user: userByEmail,
             token: token,

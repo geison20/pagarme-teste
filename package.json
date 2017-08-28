@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "nodemon app.js",
-    "start-deploy": "pm2 start app.js",
+    "start-dev": "nodemon app.js",
+    "start-prod": "pm2 start app.js",
     "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js",
     "log": "tail -f logs/output.log"
   },

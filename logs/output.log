@@ -1,3 +1,8 @@
-14:59:07.974 INFO  TESTE 
-15:05:47.768 INFO  Unauthorized from ::1 
+14:59:07.974 INFO  TESTE
+15:05:47.768 INFO  Unauthorized from ::1
 15:06:15.134 INFO  Unauthorized from ::1 
+16:16:12.137 ERROR Error in create a pokemon
+16:23:46.072 ERROR Error in create a user
+16:29:15.902 INFO  Unauthorized from ::1
+16:54:07.908 ERROR Error in create a pokemon
+17:03:00.220 INFO  Unauthorized from ::1
