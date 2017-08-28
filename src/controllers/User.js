@@ -27,6 +27,7 @@ class User {
     })
     .catch( err => {
       console.error(err);
+      log.error("Error in create a user");
 
       res.status(400).json({
         error: true,

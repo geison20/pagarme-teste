@@ -48,6 +48,7 @@ class Authentication {
     })
     .catch( err => {
       console.log(err);
+      log.warn("Fail login");
 
       res.status(400).json({
         error : true,

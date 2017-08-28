@@ -31,6 +31,7 @@ class Pokemon {
     })
     .catch( err => {
       console.error(err);
+      log.error("Error in create a pokemon");
 
       res.status(400).json({
         error: true,
@@ -66,6 +67,7 @@ class Pokemon {
       return;
     }).catch(err => {
       console.error(err);
+      log.error("Error in find all pokemons");
 
       res.status(400).json({
         error: true,
@@ -134,7 +136,8 @@ class Pokemon {
       return;
     })
     .catch( err => {
-      console.log("ERRO ------>", err);
+      console.log(err);
+      log.error("Error in buy a pokemon");
 
       res.status(400).json({
         error: true,

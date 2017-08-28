@@ -1,5 +1,5 @@
 const express = require('express');
-const logger = require('morgan');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -15,10 +15,12 @@ require('dotenv').config();
 
 require("./src/config/database");
 
+global.log = require('simple-node-logger').createSimpleFileLogger('logs/output.log');
+
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(logger("dev"));
+app.use(morgan("dev"));
 app.use(cors());
 app.use(expressValidator({
   customValidators: {

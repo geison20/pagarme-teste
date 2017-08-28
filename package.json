@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon app.js",
     "start-deploy": "pm2 start app.js",
-    "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js"
+    "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js",
+    "log": "tail -f logs/output.log"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -23,6 +24,7 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "sequelize": "^3.30.4",
+    "simple-node-logger": "^0.93.28",
     "sqlite3": "^3.1.9"
   },
   "devDependencies": {
