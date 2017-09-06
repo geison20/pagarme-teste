@@ -1,13 +1,13 @@
-const JWToken = require('jsonwebtoken');
+const JWToken = require("jsonwebtoken");
 
 class JsonWebToken {
-  create (payload, cb, options = { expiresIn: "4h" }) {
-    JWToken.sign( payload, process.env.SECRET_JWT, options, (err, token) => {
-        if (err) console.log(err);
+    static create(payload, cb, options = { expiresIn: "4h" }) {
+        JWToken.sign(payload, process.env.SECRET_JWT, options, (err, token) => {
+            if (err) console.log(err);
 
-        cb(token);
-    });
-  }
+            cb(token);
+        });
+    }
 }
 
 module.exports = new JsonWebToken();
