@@ -6,6 +6,7 @@
     "start-dev": "nodemon app.js",
     "start-prod": "pm2 start app.js",
     "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js",
+    "code-lint": "./node_modules/.bin/eslint src/**/*.js --fix",
     "logs": "tail -f logs/output.log"
   },
   "dependencies": {
@@ -29,6 +30,9 @@
   },
   "devDependencies": {
     "chai": "^4.1.1",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
     "mocha": "^3.5.0",
     "supertest": "^3.0.0"
   }
