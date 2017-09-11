@@ -34,7 +34,10 @@ const User = SequelizeInstance.define("user", {
     freezeTableName: true, // Model tableName will be the same as the model name
 });
 
-// User.sync({ force: true });
-User.sync();
+if (process.env.ENV === "development") {
+  User.sync({ force: true });
+} else {
+  User.sync();
+}
 
 module.exports = User;
