@@ -20,7 +20,10 @@ const Pokemon = SequelizeInstance.define("pokemon", {
     freezeTableName: true, // Model tableName will be the same as the model name
 });
 
-// Pokemon.sync({force: true});
-Pokemon.sync();
+if (process.env.ENV === "development") {
+  Pokemon.sync({force: true});
+} else {
+  Pokemon.sync();
+}
 
 module.exports = Pokemon;

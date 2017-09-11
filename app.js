@@ -8,6 +8,10 @@ const fs = require('fs');
 const expressValidator = require("express-validator");
 const routesPaths = path.join(__dirname, 'src/routes');
 const jwt_express = require('express-jwt');
+const expressBrute = require('express-brute');
+const SequelizeStoreBruteAttack = require('express-brute-sequelize');
+
+let store;
 
 const app = express();
 
@@ -53,6 +57,34 @@ app.use(jwt_express({ secret : process.env.SECRET_JWT }).unless({
 
 // request errors handle
 require("./src/errors/jwt")(app);
+
+// middleware to all routes to prevent brute attacks
+if(process.env.ENV ===  "development") {
+  store = new expressBrute.MemoryStore(); // stores state locally, don't use this in production
+} else {
+  new SequelizeStoreBruteAttack(SequelizeInstance, 'bruteStore', {}, (storeSequelize) => {
+  	store = new expressBrute(storeSequelize); // store in production
+  });
+}
+
+const preventBruteForceAttack = new expressBrute(store, {
+    freeRetries: 10,
+    minWait: 5*60*1000, // 5 minutes
+    maxWait: 60*60*1000, // 1 hour,
+    failCallback: (req, res, next, nextValidRequestDate) => {
+      return res.status(302).json({
+        error: true,
+        code: 302,
+        message: "Many attempts, wait 5 minutes",
+        redirect: `/api/${process.env.API_VERSION}/authentication/login`,
+        date: new Date()
+      });
+    },
+    handleStoreError: (err) => log.error(err)
+});
+
+// use for all routes
+app.all("*", preventBruteForceAttack.prevent, (req, res, next) => next());
 
 // server init
 app.listen(process.env.PORT, () => console.log(`Api Started in port ${process.env.PORT}`));
