@@ -35,9 +35,9 @@ const User = SequelizeInstance.define("user", {
 });
 
 if (process.env.ENV === "development") {
-  User.sync({ force: true });
+    User.sync({ force: true });
 } else {
-  User.sync();
+    User.sync();
 }
 
 module.exports = User;
