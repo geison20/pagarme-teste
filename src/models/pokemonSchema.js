@@ -21,9 +21,9 @@ const Pokemon = SequelizeInstance.define("pokemon", {
 });
 
 if (process.env.ENV === "development") {
-  Pokemon.sync({force: true});
+    Pokemon.sync({ force: true });
 } else {
-  Pokemon.sync();
+    Pokemon.sync();
 }
 
 module.exports = Pokemon;

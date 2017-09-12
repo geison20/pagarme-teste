@@ -10,11 +10,7 @@ class Authentication {
         })
             .then((userByEmail) => {
                 if (!userByEmail) { // if not found user
-                    throw new Error({
-                        error: true,
-                        message: "login fail, check email",
-                        email,
-                    });
+                    throw new Error("login fail, check email");
                 } else if (UserModel.validPassword(password, userByEmail)) { // now valid password
                     const userByEmailJSON = userByEmail.toJSON();
 
@@ -32,11 +28,7 @@ class Authentication {
                         date: new Date(),
                     }));
                 } else {
-                    throw new Error({
-                        error: true,
-                        message: "login fail, check password",
-                        password,
-                    });
+                    throw new Error("login fail, check password");
                 }
             })
             .catch((err) => {
@@ -47,7 +39,6 @@ class Authentication {
                     error: true,
                     status_code: 400,
                     message: err.message ? err.message : "Error in system",
-                    error_system: err,
                     date: new Date(),
                 });
             });

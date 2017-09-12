@@ -84,3 +84,43 @@
 17:27:32.668 ERROR Error in create a user 
 17:27:33.827 ERROR Error in create a user 
 17:27:34.584 ERROR Error in create a user 
+02:43:57.984 ERROR Error in create a user 
+02:44:50.011 ERROR Error in create a user 
+02:57:20.481 ERROR Error in create a user 
+03:00:22.340 ERROR Error in create a user 
+03:00:29.439 WARN  Fail login 
+03:06:20.538 ERROR Error in create a user 
+03:07:51.781 ERROR Error in create a user 
+03:10:05.078 ERROR Error in buy a pokemon 
+03:13:06.284 ERROR Error in buy a pokemon 
+03:14:25.408 ERROR Error in buy a pokemon 
+03:15:08.790 ERROR Error in buy a pokemon 
+03:15:18.379 ERROR Error in buy a pokemon 
+03:16:21.441 WARN  Fail login 
+03:17:50.273 WARN  Fail login 
+03:17:58.983 WARN  Fail login 
+03:18:50.117 ERROR Error in buy a pokemon 
+03:18:59.528 ERROR Error in buy a pokemon 
+03:19:55.702 ERROR Error in create a user 
+03:21:33.609 ERROR Error in create a user 
+03:21:33.755 WARN  Fail login 
+03:21:33.781 INFO  Unauthorized from ::ffff:127.0.0.1 
+03:21:33.805 INFO  Unauthorized from ::ffff:127.0.0.1 
+03:22:31.327 ERROR Error in create a user 
+03:22:31.392 WARN  Fail login 
+03:22:31.415 INFO  Unauthorized from ::ffff:127.0.0.1 
+03:22:31.434 INFO  Unauthorized from ::ffff:127.0.0.1 
+03:25:08.718 ERROR Error in create a user 
+03:25:08.772 WARN  Fail login 
+03:25:08.803 INFO  Unauthorized from ::ffff:127.0.0.1 
+03:25:08.828 INFO  Unauthorized from ::ffff:127.0.0.1 
+04:09:26.976 ERROR Error in create a user 
+04:09:27.528 ERROR Error in create a user 
+04:09:28.105 ERROR Error in create a user 
+04:09:28.475 ERROR Error in create a user 
+04:09:28.947 ERROR Error in create a user 
+04:09:29.362 ERROR Error in create a user 
+04:09:29.756 ERROR Error in create a user 
+04:09:30.302 ERROR Error in create a user 
+04:09:30.731 ERROR Error in create a user 
+04:09:31.262 ERROR Error in create a user 
