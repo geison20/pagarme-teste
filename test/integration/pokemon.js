@@ -16,7 +16,9 @@ describe("Routes Pokemon", () => {
     .post(`/api/${process.env.API_VERSION}/user/create`)
     .send(userTest)
     .expect(201)
-    .end(done);
+    .end( (err, response) => {
+      done();
+    });
   });
 
   // make login with user

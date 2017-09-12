@@ -4,9 +4,9 @@ Fazer o refactoring de uma API para venda de Pokemons
 
 ## Instalação
 
-### Instalação do Node.js 8.4.0
+### Instalação do Node.js v6.11.3 - LTS
 
-- Node.js versão v8.4.0
+- Node.js versão v6.11.3 - LTS
 - Instruções de instalação [neste link](https://nodejs.org/en/download/package-manager)
 
 ### Dependências do Projeto

@@ -56,7 +56,7 @@ class Pokemon {
                 code: 200,
                 message: "ok",
                 error_system: null,
-                pokemonsFilter,
+                pokemons: pokemonsFilter,
                 date: new Date(),
             });
         }).catch((err) => {
@@ -82,9 +82,9 @@ class Pokemon {
         }).then((pokemon) => {
             pokemonInstance = pokemon;
 
-            if (!pokemon) throw new Error({ message: "notfound pokemon" });
+            if (!pokemon) throw new Error("notfound pokemon");
 
-            if (pokemon.stock < quantity) throw new Error({ message: "Not enought pokemon in stock" });
+            if (pokemon.stock < quantity) throw new Error("Not enought pokemon in stock");
 
             const pokemonPrice = pokemon.price;
             const pokemonName = pokemon.name;
