@@ -77,44 +77,51 @@ class Pokemon {
         const pagarmeUri = "https://api.pagar.me/1/transactions";
         let pokemonInstance = {};
 
-        PokemonModel.findOne({
-            where: { id: idPokemon },
-        }).then((pokemon) => {
-            pokemonInstance = pokemon;
-
-            if (!pokemon) throw new Error("notfound pokemon");
-
-            if (pokemon.stock < quantity) throw new Error("Not enought pokemon in stock");
-
-            const pokemonPrice = pokemon.price;
-            const pokemonName = pokemon.name;
-            const amount = pokemonPrice * quantity * 100;
-
-            return request({
-                uri: pagarmeUri,
-                method: "POST",
-                json: {
-                    api_key: process.env.API_KEY_PAGARME,
-                    amount,
-                    card_number: "4024007138010896",
-                    card_expiration_date: "1050",
-                    card_holder_name: "Ash Ketchum",
-                    card_cvv: "123",
-                    metadata: {
-                        product: "pokemon",
-                        name: pokemonName,
-                        quantity,
-                    },
-                },
-            });
+        // createTransaction
+        SequelizeInstance.transaction(transactionInstance => PokemonModel.findOne({
+            where: {
+                id: idPokemon,
+            },
+            transaction: transactionInstance,
         })
+            .then((pokemon) => {
+                pokemonInstance = pokemon;
+
+                if (!pokemon) throw new Error("notfound pokemon");
+
+                if (pokemon.stock < quantity) throw new Error("Not enought pokemon in stock");
+
+                const pokemonPrice = pokemon.price;
+                const pokemonName = pokemon.name;
+                const amount = pokemonPrice * quantity * 100;
+
+                return request({
+                    uri: pagarmeUri,
+                    method: "POST",
+                    json: {
+                        api_key: process.env.API_KEY_PAGARME,
+                        amount,
+                        card_number: "4024007138010896",
+                        card_expiration_date: "1050",
+                        card_holder_name: "Ash Ketchum",
+                        card_cvv: "123",
+                        metadata: {
+                            product: "pokemon",
+                            name: pokemonName,
+                            quantity,
+                        },
+                    },
+                });
+            })
             .then((response) => {
                 if (response.status === "paid") {
                     pokemonInstance.stock -= quantity;
-                    return pokemonInstance.save();
+                    return pokemonInstance.save({ transaction: transactionInstance });
                 }
-                return Promise.reject(response.message);
-            })
+                console.log(response.status);
+                log.error(`Status fail buy a pokemon ${response.status}`);
+                throw new Error(`Status fail buy a pokemon ${response.status}`);
+            }))
             .then(() => {
                 res.status(200).json({
                     error: false,
