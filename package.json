@@ -2,6 +2,12 @@
   "name": "pokemon",
   "version": "1.0.0",
   "private": false,
+  "main": "app.js",
+  "author": "Geisson Machado Antunes <geisonnm@hotmail.com>",
+  "licence": "ISC",
+  "engines": {
+    "node": ">=6.11.3"
+  },
   "scripts": {
     "start-dev": "nodemon app.js",
     "start-prod": "pm2 start app.js",
